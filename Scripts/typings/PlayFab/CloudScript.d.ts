@@ -123,6 +123,14 @@ declare namespace PlayFabServerModels {
         PlayFabId: string,
     }
 
+    /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.AddGenericIDRequest */
+    interface AddGenericIDRequest {
+        /** Generic service identifier to add to the player account. */
+        GenericId: GenericServiceId,
+        /** PlayFabId of the user to link. */
+        PlayFabId: string,
+    }
+
     /**
      * This API will trigger a player_tag_added event and add a tag with the given TagName and PlayFabID to the corresponding
      * player profile. TagName can be used for segmentation and it is limited to 256 characters. Also there is a limit on the
@@ -972,6 +980,10 @@ declare namespace PlayFabServerModels {
     interface EmptyResponse {
     }
 
+    /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.EmptyResult */
+    interface EmptyResult {
+    }
+
     /**
      * Combined entity type and ID structure which uniquely identifies a single entity.
      * https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.EntityKey
@@ -1556,6 +1568,11 @@ declare namespace PlayFabServerModels {
         | "WriteAttemptedDuringExport"
         | "MultiplayerServerTitleQuotaCoresExceeded"
         | "AutomationRuleNotFound"
+        | "EntityAPIKeyLimitExceeded"
+        | "EntityAPIKeyNotFound"
+        | "EntityAPIKeyOrSecretInvalid"
+        | "EconomyServiceUnavailable"
+        | "EconomyServiceInternalError"
         | "MatchmakingEntityInvalid"
         | "MatchmakingPlayerAttributesInvalid"
         | "MatchmakingQueueNotFound"
@@ -1575,6 +1592,8 @@ declare namespace PlayFabServerModels {
         | "MatchmakingTicketMembershipLimitExceeded"
         | "MatchmakingUnauthorized"
         | "MatchmakingQueueLimitExceeded"
+        | "MatchmakingRequestTypeMismatch"
+        | "MatchmakingBadRequest"
         | "TitleConfigNotFound"
         | "TitleConfigUpdateConflict"
         | "TitleConfigSerializationError"
@@ -1587,18 +1606,8 @@ declare namespace PlayFabServerModels {
         | "CatalogItemIdInvalid"
         | "CatalogSearchParameterInvalid"
         | "CatalogFeatureDisabled"
-        | "CatalogConfigMissing"
-        | "CatalogConfigTooManyContentTypes"
-        | "CatalogConfigContentTypeTooLong"
-        | "CatalogConfigTooManyTags"
-        | "CatalogConfigTagTooLong"
-        | "CatalogConfigInvalidDeepLinkObject"
-        | "CatalogConfigInvalidDeepLinkPlatform"
-        | "CatalogConfigInvalidDeepLinkFormat"
-        | "CatalogConfigInvalidDisplayPropertyObject"
-        | "CatalogConfigInvalidDisplayPropertyName"
-        | "CatalogConfigInvalidDisplayPropertyType"
-        | "CatalogConfigDisplayPropertyMappingLimit"
+        | "CatalogConfigInvalid"
+        | "CatalogUnauthorized"
         | "ExportInvalidStatusUpdate"
         | "ExportInvalidPrefix"
         | "ExportBlobContainerDoesNotExist"
@@ -1612,7 +1621,26 @@ declare namespace PlayFabServerModels {
         | "ExportKustoExceptionNew_SomeResources"
         | "ExportKustoExceptionEdit"
         | "ExportKustoConnectionFailed"
-        | "ExportUnknownError";
+        | "ExportUnknownError"
+        | "ExportCantEditPendingExport"
+        | "ExportLimitExports"
+        | "ExportLimitEvents";
+
+    /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.GenericPlayFabIdPair */
+    interface GenericPlayFabIdPair {
+        /** Unique generic service identifier for a user. */
+        GenericId?: GenericServiceId,
+        /** Unique PlayFab identifier for a user, or null if no PlayFab account is linked to the given generic identifier. */
+        PlayFabId?: string,
+    }
+
+    /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.GenericServiceId */
+    interface GenericServiceId {
+        /** Name of the service for which the player has a unique identifier. */
+        ServiceName: string,
+        /** Unique identifier of the player in that service. */
+        UserId: string,
+    }
 
     /**
      * Request has no paramaters.
@@ -2170,6 +2198,24 @@ declare namespace PlayFabServerModels {
     interface GetPlayFabIDsFromFacebookInstantGamesIdsResult {
         /** Mapping of Facebook Instant Games identifiers to PlayFab identifiers. */
         Data?: FacebookInstantGamesPlayFabIdPair[],
+    }
+
+    /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.GetPlayFabIDsFromGenericIDsRequest */
+    interface GetPlayFabIDsFromGenericIDsRequest {
+        /**
+         * Array of unique generic service identifiers for which the title needs to get PlayFab identifiers. Currently limited to a
+         * maximum of 10 in a single request.
+         */
+        GenericIDs: GenericServiceId[],
+    }
+
+    /**
+     * For generic service identifiers which have not been linked to PlayFab accounts, null will be returned.
+     * https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.GetPlayFabIDsFromGenericIDsResult
+     */
+    interface GetPlayFabIDsFromGenericIDsResult {
+        /** Mapping of generic service identifiers to PlayFab identifiers. */
+        Data?: GenericPlayFabIdPair[],
     }
 
     /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.GetPlayFabIDsFromNintendoSwitchDeviceIdsRequest */
@@ -3285,6 +3331,14 @@ declare namespace PlayFabServerModels {
         PlayFabId: string,
     }
 
+    /** https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.RemoveGenericIDRequest */
+    interface RemoveGenericIDRequest {
+        /** Generic service identifier to be removed from the player. */
+        GenericId: GenericServiceId,
+        /** PlayFabId of the user to remove. */
+        PlayFabId: string,
+    }
+
     /**
      * This API will trigger a player_tag_removed event and remove a tag with the given TagName and PlayFabID from the
      * corresponding player profile. TagName can be used for segmentation and it is limited to 256 characters
@@ -3902,8 +3956,8 @@ declare namespace PlayFabServerModels {
 
     /**
      * This function performs an additive update of the arbitrary JSON object containing the custom data for the user. In
-     * updating the custom data object, keys which already exist in the object will have their values overwritten, while keys
-     * with null values will be removed. No other key-value pairs will be changed apart from those specified in the call.
+     * updating the custom data object, keys which already exist in the object will have their values overwritten, keys with
+     * null values will be removed. No other key-value pairs will be changed apart from those specified in the call.
      * https://api.playfab.com/Documentation/Server/datatype/PlayFab.Server.Models/PlayFab.Server.Models.UpdateCharacterDataRequest
      */
     interface UpdateCharacterDataRequest {
@@ -4457,6 +4511,14 @@ interface IPlayFabServerAPI {
     AddFriend(request: PlayFabServerModels.AddFriendRequest): PlayFabServerModels.EmptyResponse;
 
     /**
+     * Adds the specified generic service identifier to the player's PlayFab account. This is designed to allow for a PlayFab
+     * ID lookup of any arbitrary service identifier a title wants to add. This identifier should never be used as
+     * authentication credentials, as the intent is that it is easily accessible by other players.
+     * https://api.playfab.com/Documentation/Server/method/AddGenericID
+     */
+    AddGenericID(request: PlayFabServerModels.AddGenericIDRequest): PlayFabServerModels.EmptyResult;
+
+    /**
      * Adds a given tag to a player profile. The tag's namespace is automatically generated based on the source of the tag.
      * https://api.playfab.com/Documentation/Server/method/AddPlayerTag
      */
@@ -4712,6 +4774,14 @@ interface IPlayFabServerAPI {
     GetPlayFabIDsFromFacebookInstantGamesIds(request: PlayFabServerModels.GetPlayFabIDsFromFacebookInstantGamesIdsRequest): PlayFabServerModels.GetPlayFabIDsFromFacebookInstantGamesIdsResult;
 
     /**
+     * Retrieves the unique PlayFab identifiers for the given set of generic service identifiers. A generic identifier is the
+     * service name plus the service-specific ID for the player, as specified by the title when the generic identifier was
+     * added to the player account.
+     * https://api.playfab.com/Documentation/Server/method/GetPlayFabIDsFromGenericIDs
+     */
+    GetPlayFabIDsFromGenericIDs(request: PlayFabServerModels.GetPlayFabIDsFromGenericIDsRequest): PlayFabServerModels.GetPlayFabIDsFromGenericIDsResult;
+
+    /**
      * Retrieves the unique PlayFab identifiers for the given set of Nintendo Switch Device identifiers.
      * https://api.playfab.com/Documentation/Server/method/GetPlayFabIDsFromNintendoSwitchDeviceIds
      */
@@ -4946,6 +5016,12 @@ interface IPlayFabServerAPI {
      * https://api.playfab.com/Documentation/Server/method/RemoveFriend
      */
     RemoveFriend(request: PlayFabServerModels.RemoveFriendRequest): PlayFabServerModels.EmptyResponse;
+
+    /**
+     * Removes the specified generic service identifier from the player's PlayFab account.
+     * https://api.playfab.com/Documentation/Server/method/RemoveGenericID
+     */
+    RemoveGenericID(request: PlayFabServerModels.RemoveGenericIDRequest): PlayFabServerModels.EmptyResult;
 
     /**
      * Remove a given tag from a player profile. The tag's namespace is automatically generated based on the source of the tag.
@@ -5619,7 +5695,7 @@ declare namespace PlayFabEventsModels {
     interface EventContents {
         /** Entity associated with the event. If null, the event will apply to the calling entity. */
         Entity?: EntityKey,
-        /** The namespace in which the event is defined. It must be prepended with 'com.playfab.events.' */
+        /** The namespace in which the event is defined. It must begin with 'com.playfab.events.' */
         EventNamespace: string,
         /** The name of this event. */
         Name: string,
@@ -6334,6 +6410,8 @@ declare namespace PlayFabProfilesModels {
 
     /** https://api.playfab.com/Documentation/Profiles/datatype/PlayFab.Profiles.Models/PlayFab.Profiles.Models.EntityProfileBody */
     interface EntityProfileBody {
+        /** Avatar URL for the entity. */
+        AvatarUrl?: string,
         /** The creation time of this profile in UTC. */
         Created: string,
         /**
@@ -6507,7 +6585,7 @@ declare namespace PlayFabProfilesModels {
     }
 
     /**
-     * Given an entity profile, will update its language to the one passed in if the profile's version is at least the one
+     * Given an entity profile, will update its language to the one passed in if the profile's version is equal to the one
      * passed in.
      * https://api.playfab.com/Documentation/Profiles/datatype/PlayFab.Profiles.Models/PlayFab.Profiles.Models.SetProfileLanguageRequest
      */

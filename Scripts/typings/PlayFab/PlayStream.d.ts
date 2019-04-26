@@ -7,6 +7,98 @@ declare namespace PlayStreamModels {
      * PlayStream Group: none
      */
 
+    /**
+     * This event is triggered when a catalog item is created.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_catalog_item_created
+     */
+    interface entity_catalog_item_created extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The catalog requested event payload. */
+        Payload?: EntityCatalogDraftItemCreatedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a catalog item is deleted.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_catalog_item_deleted
+     */
+    interface entity_catalog_item_deleted extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The catalog requested event payload. */
+        Payload?: EntityCatalogDraftItemDeletedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a catalog draft item is requested to be published.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_catalog_item_publish_requested
+     */
+    interface entity_catalog_item_publish_requested extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The catalog requested event payload. */
+        Payload?: EntityCatalogDraftItemPublishRequestedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a catalog item is updated.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_catalog_item_updated
+     */
+    interface entity_catalog_item_updated extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The catalog requested event payload. */
+        Payload?: EntityCatalogDraftItemUpdatedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_created */
     interface entity_created extends IBasePlayStreamEvent {
         /** The chain of ownership for this entity. */
@@ -71,22 +163,118 @@ declare namespace PlayStreamModels {
     }
 
     /**
-     * This event is triggered when an entity's virtual currency balance changes.
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_virtual_currency_balances_changed
+     * This event is triggered when a User Generated Content item is created.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_user_generated_content_item_created
      */
-    interface entity_virtual_currency_balances_changed extends IBasePlayStreamEvent {
-        /** The chain of ownership for this entity. */
-        EntityChain?: string,
+    interface entity_user_generated_content_item_created extends IBasePlayStreamEvent {
         /** Entities that this entity is a child of. */
         EntityLineage?: EntityLineage,
-        /** Sequence id of the balance change to ensure updates are processed in order. */
-        SequenceId?: string,
-        /** New virtual currency balances after the change. Only shows currencies that were updated. */
-        VirtualCurrencyBalances?: { [key: string]: number },
-        /** Container whose balances changed. */
-        VirtualCurrencyContainerId?: string,
-        /** Old virtual currency balances before the change. Only shows currencies that were updated. */
-        VirtualCurrencyPreviousBalances?: { [key: string]: number },
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The User Generated Content requested event payload. */
+        Payload?: EntityUserGeneratedContentDraftItemCreatedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a User Generated Content item is deleted.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_user_generated_content_item_deleted
+     */
+    interface entity_user_generated_content_item_deleted extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The User Generated Content requested event payload. */
+        Payload?: EntityUserGeneratedContentDraftItemDeletedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a User Generated Content draft item is requested to be published.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_user_generated_content_item_publish_requested
+     */
+    interface entity_user_generated_content_item_publish_requested extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The User Generated Content requested event payload. */
+        Payload?: EntityUserGeneratedContentDraftItemPublishRequestedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a User Generated Content item is updated.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_user_generated_content_item_updated
+     */
+    interface entity_user_generated_content_item_updated extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The User Generated Content requested event payload. */
+        Payload?: EntityUserGeneratedContentDraftItemUpdatedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when a User Generated Content item is reported.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/entity_user_generated_content_item_reported
+     */
+    interface entity_user_generated_content_item_reported extends IBasePlayStreamEvent {
+        /** Entities that this entity is a child of. */
+        EntityLineage?: EntityLineage,
+        /**
+         * The original unique identifier associated with this event before it was posted to PlayFab. The value might differ from
+         * the EventId value, which is assigned when the event is received by the server.
+         */
+        OriginalEventId?: string,
+        /**
+         * The original time (in UTC) associated with this event before it was posted to PlayFab. The value might differ from the
+         * Timestamp value, which is set at the time the event is received by the server.
+         */
+        OriginalTimestamp?: string,
+        /** The User Generated Content reported event payload. */
+        Payload?: EntityUserGeneratedContentItemReportedEventPayload,
+        /** Entity that wrote this event, included only if different than the event's entity. */
+        WriterEntity?: EntityKey,
     }
 
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/group_created */
@@ -251,59 +439,6 @@ declare namespace PlayStreamModels {
         UpdaterEntityId?: string,
         /** The type of entity that updated the group to which this event applies. */
         UpdaterEntityType?: string,
-    }
-
-    /**
-     * This event is triggered when a group of tickets are matched together.
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/matchmaking_match_found
-     */
-    interface matchmaking_match_found extends IBasePlayStreamEvent {
-        /** Entities that this entity is a child of. */
-        EntityLineage?: EntityLineage,
-        /** Payload that this entity is a child of. */
-        Payload?: MatchmakingMatchFoundPayload,
-        /** Entity that wrote this event, included only if different than the event's entity. */
-        WriterEntity?: EntityKey,
-    }
-
-    /**
-     * This event is triggered when a matchmaking ticket reaches a completion state.
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/matchmaking_ticket_completed
-     */
-    interface matchmaking_ticket_completed extends IBasePlayStreamEvent {
-        /** Entities that this entity is a child of. */
-        EntityLineage?: EntityLineage,
-        /** Payload that this entity is a child of. */
-        Payload?: MatchmakingTicketCompletePayload,
-        /** Entity that wrote this event, included only if different than the event's entity. */
-        WriterEntity?: EntityKey,
-    }
-
-    /**
-     * This event is triggered when a matchmaking ticket reaches a completion state. This event is sent to each of the users in
-     * the completed ticket
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/matchmaking_user_ticket_completed
-     */
-    interface matchmaking_user_ticket_completed extends IBasePlayStreamEvent {
-        /** Entities that this entity is a child of. */
-        EntityLineage?: EntityLineage,
-        /** Payload that this entity is a child of. */
-        Payload?: MatchmakingUserTicketCompletePayload,
-        /** Entity that wrote this event, included only if different than the event's entity. */
-        WriterEntity?: EntityKey,
-    }
-
-    /**
-     * This event is triggered when a ticket with an invited user is created. The event will be sent to the invited user.
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/matchmaking_user_ticket_invite
-     */
-    interface matchmaking_user_ticket_invite extends IBasePlayStreamEvent {
-        /** Entities that this entity is a child of. */
-        EntityLineage?: EntityLineage,
-        /** Payload that this entity is a child of. */
-        Payload?: MatchmakingUserTicketInvitePayload,
-        /** Entity that wrote this event, included only if different than the event's entity. */
-        WriterEntity?: EntityKey,
     }
 
     /**
@@ -626,6 +761,19 @@ declare namespace PlayStreamModels {
         Payload?: MultiplayerServerVmUnhealthyEventPayload,
         /** Entity that wrote this event, included only if different than the event's entity. */
         WriterEntity?: EntityKey,
+    }
+
+    /**
+     * This event is triggered when an update occurs to a publisher product mapping for a title.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/publisher_product_mapping_changed
+     */
+    interface publisher_product_mapping_changed extends IBasePlayStreamEvent {
+        DeveloperId?: string,
+        /** The publishing store. */
+        Publisher?: PublisherStore,
+        /** The product ids for this publisher, mapped to this title. */
+        PublisherProducts?: PublisherProduct[],
+        UserId?: string,
     }
 
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/none/studio_created */
@@ -2353,19 +2501,6 @@ declare namespace PlayStreamModels {
     }
 
     /**
-     * This event is triggered when a queue config is changed.
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/title/title_queue_config_updated
-     */
-    interface title_queue_config_updated extends IBasePlayStreamEvent {
-        /** Was the queue config deleted. */
-        Deleted: boolean,
-        DeveloperId?: string,
-        /** Name of the queue config that was updated. */
-        MatchQueueName?: string,
-        UserId?: string,
-    }
-
-    /**
      * This event is triggered when a title requests a service limit change.
      * https://api.playfab.com/playstream/docs/PlayStreamEventModels/title/title_requested_limit_change
      */
@@ -2509,238 +2644,6 @@ declare namespace PlayStreamModels {
     /*
      * PlayStream Group: child types
      */
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityLineage */
-    interface EntityLineage {
-        /** The Character Id of the associated entity. */
-        CharacterId?: string,
-        /** The Group Id of the associated entity. */
-        GroupId?: string,
-        /** The Master Player Account Id of the associated entity. */
-        MasterPlayerAccountId?: string,
-        /** The Namespace Id of the associated entity. */
-        NamespaceId?: string,
-        /** The Title Id of the associated entity. */
-        TitleId?: string,
-        /** The Title Player Account Id of the associated entity. */
-        TitlePlayerAccountId?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/LogStatement */
-    interface LogStatement {
-        /** Optional object accompanying the message as contextual information */
-        Data?: any,
-        /** 'Debug', 'Info', or 'Error' */
-        Level?: string,
-        Message?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ScriptExecutionError */
-    interface ScriptExecutionError {
-        /**
-         * Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded,
-         * CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError
-         */
-        Error?: string,
-        /** Details about the error */
-        Message?: string,
-        /** Point during the execution of the script at which the error occurred, if any */
-        StackTrace?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ExecuteCloudScriptResult */
-    interface ExecuteCloudScriptResult {
-        /** Number of PlayFab API requests issued by the CloudScript function */
-        APIRequestsIssued: number,
-        /** Information about the error, if any, that occurred during execution */
-        Error?: ScriptExecutionError,
-        ExecutionTimeSeconds: number,
-        /** The name of the function that executed */
-        FunctionName?: string,
-        /** The object returned from the CloudScript function, if any */
-        FunctionResult?: any,
-        /**
-         * Flag indicating if the FunctionResult was too large and was subsequently dropped from this event. This only occurs if
-         * the total event size is larger than 350KB.
-         */
-        FunctionResultTooLarge?: boolean,
-        /** Number of external HTTP requests issued by the CloudScript function */
-        HttpRequestsIssued: number,
-        /**
-         * Entries logged during the function execution. These include both entries logged in the function code using log.info()
-         * and log.error() and error entries for API and HTTP request failures.
-         */
-        Logs?: LogStatement[],
-        /**
-         * Flag indicating if the logs were too large and were subsequently dropped from this event. This only occurs if the total
-         * event size is larger than 350KB after the FunctionResult was removed.
-         */
-        LogsTooLarge?: boolean,
-        MemoryConsumedBytes: number,
-        /**
-         * Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP
-         * requests.
-         */
-        ProcessorTimeSeconds: number,
-        /** The revision of the CloudScript that executed */
-        Revision: number,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/OperationTypes */
-    type OperationTypes = "Created"
-        | "Updated"
-        | "Deleted"
-        | "None";
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/FileSet */
-    interface FileSet {
-        /** The storage size according to the underlying provider. */
-        ByteCount: number,
-        /** The checksum according to the underlying provider. */
-        Checksum?: string,
-        /** File that was updated. */
-        FileName?: string,
-        /** The operation that was performed. */
-        Operation?: OperationTypes,
-        /** The storage size of the old file, if there was one. */
-        PreviousByteCount?: number,
-        /** The storage size of the old file, if there was one. */
-        PreviousChecksum?: string,
-        /** The old file's unique storage path that was deleted by this operation, if there was one. */
-        PreviousStoragePath?: string,
-        /** The unique storage path for this set operation. */
-        StoragePath?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ObjectSet */
-    interface ObjectSet {
-        /** The JSON Object that was last set on the profile. */
-        DataObject?: any,
-        /** The name of this object. */
-        Name?: string,
-        /** The operation that was performed. */
-        Operation?: OperationTypes,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/Member */
-    interface Member {
-        /** The identifier for the member entity. */
-        EntityId?: string,
-        /** The type of member entity. */
-        EntityType?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/RolePropertyValues */
-    interface RolePropertyValues {
-        RoleName?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/GroupPropertyValues */
-    interface GroupPropertyValues {
-        AdminRoleId?: string,
-        GroupName?: string,
-        MemberRoleId?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerBuildDeletedEventPayload */
-    interface MultiplayerServerBuildDeletedEventPayload {
-        /** The guid string ID of the multiplayer server build that was deleted. */
-        BuildId?: string,
-    }
-
-    /**
-     * Combined entity type and ID structure which uniquely identifies a single entity.
-     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityKey
-     */
-    interface EntityKey {
-        /** Unique ID of the entity. */
-        Id: string,
-        /** Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes */
-        Type?: string,
-        /** Alternate name for Type. */
-        TypeString?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/AzureRegion */
-    type AzureRegion = "AustraliaEast"
-        | "AustraliaSoutheast"
-        | "BrazilSouth"
-        | "CentralUs"
-        | "EastAsia"
-        | "EastUs"
-        | "EastUs2"
-        | "JapanEast"
-        | "JapanWest"
-        | "NorthCentralUs"
-        | "NorthEurope"
-        | "SouthCentralUs"
-        | "SoutheastAsia"
-        | "WestEurope"
-        | "WestUs"
-        | "ChinaEast2"
-        | "ChinaNorth2";
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerBuildRegionStatusChangedEventPayload */
-    interface MultiplayerServerBuildRegionStatusChangedEventPayload {
-        /** The guid string ID of the build. */
-        BuildId?: string,
-        /** The duration (minutes) in the old build status. */
-        MinutesInOldStatus: number,
-        /** The new build region status. */
-        NewStatus?: string,
-        /** The old build region status. */
-        OldStatus?: string,
-        /** The build region. */
-        Region?: AzureRegion,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/BuildRegion */
-    interface BuildRegion {
-        /** The maximum number of multiplayer servers for the region. */
-        MaxServers: number,
-        /** The build region. */
-        Region?: AzureRegion,
-        /** The number of standby multiplayer servers for the region. */
-        StandbyServers: number,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerBuildRegionUpdatedEventPayload */
-    interface MultiplayerServerBuildRegionUpdatedEventPayload {
-        /** The guid string ID of the multiplayer server build that regions were updated on. */
-        BuildId?: string,
-        /** The updated region configuration that should be applied to the specified build. */
-        BuildRegions?: BuildRegion[],
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerCertificateDeletedEventPayload */
-    interface MultiplayerServerCertificateDeletedEventPayload {
-        /** The name of the certificate that was deleted. */
-        CertificateName?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerCertificateUploadedEventPayload */
-    interface MultiplayerServerCertificateUploadedEventPayload {
-        /** The name of the certificate that was uploaded. */
-        CertificateName?: string,
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerCreateBuildInitiatedEventPayload */
-    interface MultiplayerServerCreateBuildInitiatedEventPayload {
-        /** The guid string ID of the build */
-        BuildId?: string,
-        /** The build name. */
-        BuildName?: string,
-        /** The time (UTC) that the build was created. */
-        CreationTime?: string,
-        /** The developer defined metadata of the build. */
-        Metadata?: { [key: string]: string | null },
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerGameAssetDeletedEventPayload */
-    interface MultiplayerServerGameAssetDeletedEventPayload {
-        /** The filename of the asset that was deleted. */
-        AssetFileName?: string,
-    }
 
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/GenericErrorCodes */
     type GenericErrorCodes = "Success"
@@ -3134,8 +3037,7 @@ declare namespace PlayStreamModels {
         | "EntityProfileConstraintValidationFailed"
         | "TelemetryIngestionKeyPending"
         | "TelemetryIngestionKeyNotFound"
-        | "StatisticTagRequired"
-        | "StatisticTagInvalid"
+        | "StatisticChildNameInvalid"
         | "DataIntegrityError"
         | "VirtualCurrencyCannotBeSetToOlderVersion"
         | "VirtualCurrencyMustBeWithinIntegerRange"
@@ -3161,47 +3063,354 @@ declare namespace PlayStreamModels {
         | "TitleNewsMissingTitleOrBody"
         | "TitleNewsInvalidLanguage"
         | "EmailRecipientBlacklisted"
+        | "InvalidGameCenterAuthRequest"
+        | "GameCenterAuthenticationFailed"
+        | "CannotEnablePartiesForTitle"
+        | "PartyError"
+        | "PartyRequests"
+        | "PartyNoContent"
+        | "PartyBadRequest"
+        | "PartyUnauthorized"
+        | "PartyForbidden"
+        | "PartyNotFound"
+        | "PartyConflict"
+        | "PartyInternalServerError"
+        | "PartyUnavailable"
+        | "PartyTooManyRequests"
+        | "PushNotificationTemplateMissingName"
+        | "CannotEnableMultiplayerServersForTitle"
+        | "WriteAttemptedDuringExport"
+        | "MultiplayerServerTitleQuotaCoresExceeded"
+        | "AutomationRuleNotFound"
+        | "EntityAPIKeyLimitExceeded"
+        | "EntityAPIKeyNotFound"
+        | "EntityAPIKeyOrSecretInvalid"
+        | "EconomyServiceUnavailable"
+        | "EconomyServiceInternalError"
         | "MatchmakingEntityInvalid"
         | "MatchmakingPlayerAttributesInvalid"
-        | "MatchmakingCreateRequestMissing"
-        | "MatchmakingCreateRequestCreatorMissing"
-        | "MatchmakingCreateRequestCreatorIdMissing"
-        | "MatchmakingCreateRequestUserListMissing"
-        | "MatchmakingCreateRequestGiveUpAfterInvalid"
-        | "MatchmakingTicketIdMissing"
-        | "MatchmakingMatchIdMissing"
-        | "MatchmakingMatchIdIdMissing"
-        | "MatchmakingQueueNameMissing"
-        | "MatchmakingTitleIdMissing"
-        | "MatchmakingTicketIdIdMissing"
-        | "MatchmakingPlayerIdMissing"
-        | "MatchmakingJoinRequestUserMissing"
-        | "MatchmakingQueueConfigNotFound"
+        | "MatchmakingQueueNotFound"
         | "MatchmakingMatchNotFound"
         | "MatchmakingTicketNotFound"
-        | "MatchmakingCreateTicketServerIdentityInvalid"
-        | "MatchmakingCreateTicketClientIdentityInvalid"
-        | "MatchmakingGetTicketUserMismatch"
-        | "MatchmakingJoinTicketServerIdentityInvalid"
-        | "MatchmakingJoinTicketUserIdentityMismatch"
-        | "MatchmakingCancelTicketServerIdentityInvalid"
-        | "MatchmakingCancelTicketUserIdentityMismatch"
-        | "MatchmakingGetMatchIdentityMismatch"
-        | "MatchmakingPlayerIdentityMismatch"
         | "MatchmakingAlreadyJoinedTicket"
         | "MatchmakingTicketAlreadyCompleted"
-        | "MatchmakingQueueNameInvalid"
         | "MatchmakingQueueConfigInvalid"
         | "MatchmakingMemberProfileInvalid"
-        | "WriteAttemptedDuringExport"
         | "NintendoSwitchDeviceIdNotLinked"
         | "MatchmakingNotEnabled"
-        | "MatchmakingGetStatisticsIdentityInvalid"
-        | "MatchmakingStatisticsIdMissing"
-        | "CannotEnableMultiplayerServersForTitle"
+        | "MatchmakingPlayerAttributesTooLarge"
+        | "MatchmakingNumberOfPlayersInTicketTooLarge"
+        | "MatchmakingAttributeInvalid"
+        | "MatchmakingPlayerHasNotJoinedTicket"
+        | "MatchmakingRateLimitExceeded"
+        | "MatchmakingTicketMembershipLimitExceeded"
+        | "MatchmakingUnauthorized"
+        | "MatchmakingQueueLimitExceeded"
+        | "MatchmakingRequestTypeMismatch"
+        | "MatchmakingBadRequest"
         | "TitleConfigNotFound"
         | "TitleConfigUpdateConflict"
-        | "TitleConfigSerializationError";
+        | "TitleConfigSerializationError"
+        | "CatalogEntityInvalid"
+        | "CatalogTitleIdMissing"
+        | "CatalogPlayerIdMissing"
+        | "CatalogClientIdentityInvalid"
+        | "CatalogOneOrMoreFilesInvalid"
+        | "CatalogItemMetadataInvalid"
+        | "CatalogItemIdInvalid"
+        | "CatalogSearchParameterInvalid"
+        | "CatalogFeatureDisabled"
+        | "CatalogConfigInvalid"
+        | "CatalogUnauthorized"
+        | "ExportInvalidStatusUpdate"
+        | "ExportInvalidPrefix"
+        | "ExportBlobContainerDoesNotExist"
+        | "ExportEventNameNotFound"
+        | "ExportExportTitleIdNotFound"
+        | "ExportCouldNotUpdate"
+        | "ExportInvalidStorageType"
+        | "ExportAmazonBucketDoesNotExist"
+        | "ExportInvalidBlobStorage"
+        | "ExportKustoException"
+        | "ExportKustoExceptionNew_SomeResources"
+        | "ExportKustoExceptionEdit"
+        | "ExportKustoConnectionFailed"
+        | "ExportUnknownError"
+        | "ExportCantEditPendingExport"
+        | "ExportLimitExports"
+        | "ExportLimitEvents";
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityCatalogDraftItemCreatedEventPayload */
+    interface EntityCatalogDraftItemCreatedEventPayload {
+        /** The error when a catalog item create request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The string ID of the item that was created. Will be empty if the create call failed. */
+        ItemId?: string,
+        /** The human-readable error message when a catalog item create request fails. If there was no failure, will be empty. */
+        Message?: string,
+    }
+
+    /**
+     * Combined entity type and ID structure which uniquely identifies a single entity.
+     * https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityKey
+     */
+    interface EntityKey {
+        /** Unique ID of the entity. */
+        Id: string,
+        /** Entity type. See https://api.playfab.com/docs/tutorials/entities/entitytypes */
+        Type?: string,
+        /** Alternate name for Type. */
+        TypeString?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityLineage */
+    interface EntityLineage {
+        /** The Character Id of the associated entity. */
+        CharacterId?: string,
+        /** The Group Id of the associated entity. */
+        GroupId?: string,
+        /** The Master Player Account Id of the associated entity. */
+        MasterPlayerAccountId?: string,
+        /** The Namespace Id of the associated entity. */
+        NamespaceId?: string,
+        /** The Title Id of the associated entity. */
+        TitleId?: string,
+        /** The Title Player Account Id of the associated entity. */
+        TitlePlayerAccountId?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityCatalogDraftItemDeletedEventPayload */
+    interface EntityCatalogDraftItemDeletedEventPayload {
+        /** The error when a catalog item deleted request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The ID of the item that was deleted. */
+        ItemId?: string,
+        /** The human-readable error message when a catalog item deleted request fails. If there was no failure, will be empty. */
+        Message?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityCatalogDraftItemPublishRequestedEventPayload */
+    interface EntityCatalogDraftItemPublishRequestedEventPayload {
+        /** The error when a catalog item publish request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The string ID of the draft item that was requested to be published. Will be empty if the request call failed. */
+        ItemId?: string,
+        /** The human-readable error message when a catalog item publish request fails. If there was no failure, will be empty. */
+        Message?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityCatalogDraftItemUpdatedEventPayload */
+    interface EntityCatalogDraftItemUpdatedEventPayload {
+        /** The error when a catalog item update request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The string ID of the item that was updated. Will be empty if the update call failed. */
+        ItemId?: string,
+        /** The human-readable error message when a catalog item update request fails. If there was no failure, will be empty. */
+        Message?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/LogStatement */
+    interface LogStatement {
+        /** Optional object accompanying the message as contextual information */
+        Data?: any,
+        /** 'Debug', 'Info', or 'Error' */
+        Level?: string,
+        Message?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ScriptExecutionError */
+    interface ScriptExecutionError {
+        /**
+         * Error code, such as CloudScriptNotFound, JavascriptException, CloudScriptFunctionArgumentSizeExceeded,
+         * CloudScriptAPIRequestCountExceeded, CloudScriptAPIRequestError, or CloudScriptHTTPRequestError
+         */
+        Error?: string,
+        /** Details about the error */
+        Message?: string,
+        /** Point during the execution of the script at which the error occurred, if any */
+        StackTrace?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ExecuteCloudScriptResult */
+    interface ExecuteCloudScriptResult {
+        /** Number of PlayFab API requests issued by the CloudScript function */
+        APIRequestsIssued: number,
+        /** Information about the error, if any, that occurred during execution */
+        Error?: ScriptExecutionError,
+        ExecutionTimeSeconds: number,
+        /** The name of the function that executed */
+        FunctionName?: string,
+        /** The object returned from the CloudScript function, if any */
+        FunctionResult?: any,
+        /**
+         * Flag indicating if the FunctionResult was too large and was subsequently dropped from this event. This only occurs if
+         * the total event size is larger than 350KB.
+         */
+        FunctionResultTooLarge?: boolean,
+        /** Number of external HTTP requests issued by the CloudScript function */
+        HttpRequestsIssued: number,
+        /**
+         * Entries logged during the function execution. These include both entries logged in the function code using log.info()
+         * and log.error() and error entries for API and HTTP request failures.
+         */
+        Logs?: LogStatement[],
+        /**
+         * Flag indicating if the logs were too large and were subsequently dropped from this event. This only occurs if the total
+         * event size is larger than 350KB after the FunctionResult was removed.
+         */
+        LogsTooLarge?: boolean,
+        MemoryConsumedBytes: number,
+        /**
+         * Processor time consumed while executing the function. This does not include time spent waiting on API calls or HTTP
+         * requests.
+         */
+        ProcessorTimeSeconds: number,
+        /** The revision of the CloudScript that executed */
+        Revision: number,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/OperationTypes */
+    type OperationTypes = "Created"
+        | "Updated"
+        | "Deleted"
+        | "None";
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/FileSet */
+    interface FileSet {
+        /** The storage size according to the underlying provider. */
+        ByteCount: number,
+        /** The checksum according to the underlying provider. */
+        Checksum?: string,
+        /** File that was updated. */
+        FileName?: string,
+        /** The operation that was performed. */
+        Operation?: OperationTypes,
+        /** The storage size of the old file, if there was one. */
+        PreviousByteCount?: number,
+        /** The storage size of the old file, if there was one. */
+        PreviousChecksum?: string,
+        /** The old file's unique storage path that was deleted by this operation, if there was one. */
+        PreviousStoragePath?: string,
+        /** The unique storage path for this set operation. */
+        StoragePath?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ObjectSet */
+    interface ObjectSet {
+        /** The JSON Object that was last set on the profile. */
+        DataObject?: any,
+        /** The name of this object. */
+        Name?: string,
+        /** The operation that was performed. */
+        Operation?: OperationTypes,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/Member */
+    interface Member {
+        /** The identifier for the member entity. */
+        EntityId?: string,
+        /** The type of member entity. */
+        EntityType?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/RolePropertyValues */
+    interface RolePropertyValues {
+        RoleName?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/GroupPropertyValues */
+    interface GroupPropertyValues {
+        AdminRoleId?: string,
+        GroupName?: string,
+        MemberRoleId?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerBuildDeletedEventPayload */
+    interface MultiplayerServerBuildDeletedEventPayload {
+        /** The guid string ID of the multiplayer server build that was deleted. */
+        BuildId?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/AzureRegion */
+    type AzureRegion = "AustraliaEast"
+        | "AustraliaSoutheast"
+        | "BrazilSouth"
+        | "CentralUs"
+        | "EastAsia"
+        | "EastUs"
+        | "EastUs2"
+        | "JapanEast"
+        | "JapanWest"
+        | "NorthCentralUs"
+        | "NorthEurope"
+        | "SouthCentralUs"
+        | "SoutheastAsia"
+        | "WestEurope"
+        | "WestUs"
+        | "ChinaEast2"
+        | "ChinaNorth2";
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerBuildRegionStatusChangedEventPayload */
+    interface MultiplayerServerBuildRegionStatusChangedEventPayload {
+        /** The guid string ID of the build. */
+        BuildId?: string,
+        /** The duration (minutes) in the old build status. */
+        MinutesInOldStatus: number,
+        /** The new build region status. */
+        NewStatus?: string,
+        /** The old build region status. */
+        OldStatus?: string,
+        /** The build region. */
+        Region?: AzureRegion,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/BuildRegion */
+    interface BuildRegion {
+        /** The maximum number of multiplayer servers for the region. */
+        MaxServers: number,
+        /** The build region. */
+        Region?: AzureRegion,
+        /** The number of standby multiplayer servers for the region. */
+        StandbyServers: number,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerBuildRegionUpdatedEventPayload */
+    interface MultiplayerServerBuildRegionUpdatedEventPayload {
+        /** The guid string ID of the multiplayer server build that regions were updated on. */
+        BuildId?: string,
+        /** The updated region configuration that should be applied to the specified build. */
+        BuildRegions?: BuildRegion[],
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerCertificateDeletedEventPayload */
+    interface MultiplayerServerCertificateDeletedEventPayload {
+        /** The name of the certificate that was deleted. */
+        CertificateName?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerCertificateUploadedEventPayload */
+    interface MultiplayerServerCertificateUploadedEventPayload {
+        /** The name of the certificate that was uploaded. */
+        CertificateName?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerCreateBuildInitiatedEventPayload */
+    interface MultiplayerServerCreateBuildInitiatedEventPayload {
+        /** The guid string ID of the build */
+        BuildId?: string,
+        /** The build name. */
+        BuildName?: string,
+        /** The time (UTC) that the build was created. */
+        CreationTime?: string,
+        /** The developer defined metadata of the build. */
+        Metadata?: { [key: string]: string | null },
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerGameAssetDeletedEventPayload */
+    interface MultiplayerServerGameAssetDeletedEventPayload {
+        /** The filename of the asset that was deleted. */
+        AssetFileName?: string,
+    }
 
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MultiplayerServerRequestedEventPayload */
     interface MultiplayerServerRequestedEventPayload {
@@ -3307,64 +3516,66 @@ declare namespace PlayStreamModels {
         VmId?: string,
     }
 
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MatchmakingMatchFoundPayload */
-    interface MatchmakingMatchFoundPayload {
-        /** The identifier for the match. */
-        MatchId?: string,
-        /** The name of the queue the match was created in. */
-        QueueName?: string,
-        /** The list of ticket identifiers that were matched together. */
-        TicketIds?: string[],
-    }
-
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MatchmakingTicketCompletePayload */
-    interface MatchmakingTicketCompletePayload {
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityUserGeneratedContentDraftItemCreatedEventPayload */
+    interface EntityUserGeneratedContentDraftItemCreatedEventPayload {
+        /** The error when a User Generated Content item create request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The string ID of the item that was created. Will be empty if the create call failed. */
+        ItemId?: string,
         /**
-         * If the ticket result is "Canceled" then this string provides the reason why the ticket was canceled otherwise it is
-         * null. The possible list of values are "User", "Service", "Internal", "Timeout".
+         * The human-readable error message when a User Generated Content item create request fails. If there was no failure, will
+         * be empty.
          */
-        CancellationReason?: string,
-        /** Time at which this ticket was completed. */
-        CompletionTime: string,
-        /** Time at which this ticket was created. */
-        CreationTime: string,
-        /** The name of the queue the ticket was created in. */
-        QueueName?: string,
-        /** The final state of the ticket. It could be "Matched" or "Canceled". */
-        Result?: string,
-        /** Time at which this ticket was submitted into the matchmaking queue. */
-        SubmissionTime?: string,
-        /** The list of entities that are part of this ticket. */
-        TicketEntities?: EntityKey[],
-        /** Id of the ticket that was completed. */
-        TicketId?: string,
+        Message?: string,
     }
 
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MatchmakingUserTicketCompletePayload */
-    interface MatchmakingUserTicketCompletePayload {
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityUserGeneratedContentDraftItemDeletedEventPayload */
+    interface EntityUserGeneratedContentDraftItemDeletedEventPayload {
+        /** The error when a User Generated Content item deleted request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The ID of the item that was deleted. */
+        ItemId?: string,
         /**
-         * If the ticket result is "Canceled" then this string provides the reason why the ticket was canceled otherwise it is
-         * null. The possible list of values are "User", "Service", "Internal", "Timeout".
+         * The human-readable error message when a User Generated Content item deleted request fails. If there was no failure, will
+         * be empty.
          */
-        CancellationReason?: string,
-        /** The id of the match the ticket got matched into. If the ticket did not get matched this is set to null */
-        MatchId?: string,
-        /** The name of the queue the ticket was created in. */
-        QueueName?: string,
-        /** The final state of the ticket. Allowed states are "Matched" or "Canceled". */
-        Result?: string,
-        /** Id of the ticket that was completed. */
-        TicketId?: string,
+        Message?: string,
     }
 
-    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/MatchmakingUserTicketInvitePayload */
-    interface MatchmakingUserTicketInvitePayload {
-        /** Entity that invited the user to join the ticket. */
-        CreatorEntity?: EntityKey,
-        /** The name of the queue the ticket was created in. */
-        QueueName?: string,
-        /** Id of the ticket that the user was invited to. */
-        TicketId?: string,
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityUserGeneratedContentDraftItemPublishRequestedEventPayload */
+    interface EntityUserGeneratedContentDraftItemPublishRequestedEventPayload {
+        /** The error when a User Generated Content item publish request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The string ID of the draft item that was requested to be published. Will be empty if the request call failed. */
+        ItemId?: string,
+        /**
+         * The human-readable error message when a User Generated Content item publish request fails. If there was no failure, will
+         * be empty.
+         */
+        Message?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityUserGeneratedContentDraftItemUpdatedEventPayload */
+    interface EntityUserGeneratedContentDraftItemUpdatedEventPayload {
+        /** The error when a User Generated Content item update request fails. If there was no failure, will be null. */
+        ErrorCode?: GenericErrorCodes,
+        /** The string ID of the item that was updated. Will be empty if the update call failed. */
+        ItemId?: string,
+        /**
+         * The human-readable error message when a User Generated Content item update request fails. If there was no failure, will
+         * be empty.
+         */
+        Message?: string,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/EntityUserGeneratedContentItemReportedEventPayload */
+    interface EntityUserGeneratedContentItemReportedEventPayload {
+        /** The category for which this item was reported. */
+        ConcernCategory?: string,
+        /** The string ID of the item that was reported. */
+        ItemId?: string,
+        /** The reason for which this item was reported. */
+        Reason?: string,
     }
 
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/PlayerProfileProperty */
@@ -4112,6 +4323,21 @@ declare namespace PlayStreamModels {
         /** Dictionary of player's virtual currency balances */
         VirtualCurrencyBalances?: { [key: string]: number },
     }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/ProductIdType */
+    type ProductIdType = "BigCatId"
+        | "XboxTitleId";
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/PublisherProduct */
+    interface PublisherProduct {
+        /** The product Id mapped. */
+        ProductId?: string,
+        /** The type of Id mapped. */
+        ProductIdType?: ProductIdType,
+    }
+
+    /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/PublisherStore */
+    type PublisherStore = "MicrosoftStore"
 
     /** https://api.playfab.com/playstream/docs/PlayStreamEventModels/childtypes/IEnumerable_String */
     interface IEnumerable_String {
